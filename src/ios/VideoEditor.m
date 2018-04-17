@@ -359,7 +359,8 @@
     [dict setObject:[NSNumber numberWithFloat:videoWidth] forKey:@"width"];
     [dict setObject:[NSNumber numberWithFloat:videoHeight] forKey:@"height"];
     [dict setValue:videoOrientation forKey:@"orientation"];
-    [dict setValue:[NSNumber numberWithFloat:track.timeRange.duration.value / 600.0] forKey:@"duration"];
+    AVAsset *asset = [AVAsset assetWithURL:fileURL];
+    [dict setValue:[NSNumber numberWithFloat:CMTimeGetSeconds(asset.duration)] forKey:@"duration"];
     [dict setObject:[NSNumber numberWithLongLong:size] forKey:@"size"];
     [dict setObject:[NSNumber numberWithFloat:track.estimatedDataRate] forKey:@"bitrate"];
 
