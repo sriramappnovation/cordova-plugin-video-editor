@@ -288,7 +288,7 @@
     NSString *outputFilePath = [cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", outputFileName, @"jpg"]];
 
     // write out the thumbnail
-    if ([UIImagePNGRepresentation(thumbnail) writeToFile:outputFilePath atomically:YES])
+    if ([UIImageJPEGRepresentation(thumbnail, thumbQuality) writeToFile:outputFilePath atomically:YES])
     {
         NSLog(@"path to your video thumbnail: %@", outputFilePath);
         [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:outputFilePath] callbackId:command.callbackId];
